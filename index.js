@@ -2,7 +2,9 @@ const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 
-const questions = [
+const allEmployees = []
+
+const promptManager = [
     {
         type: 'input',
         name: 'managerName',
@@ -54,5 +56,11 @@ const questions = [
               return false;
             }
           }
-    },
+    }
 ]
+
+function init() {
+    inquirer.prompt(promptManager).then((managerData) => {
+        
+    })
+}
