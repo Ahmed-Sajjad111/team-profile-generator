@@ -114,6 +114,61 @@ const promptEngineer = [
   }
 ]
 
+const promptIntern = [
+  {
+      type: 'input',
+      name: 'internName',
+      message: "What is the intern's name? (Required)",
+      validate: internInput => {
+          if (internInput) {
+            return true;
+          } else {
+            console.log("Please enter the team intern's name!");
+            return false;
+          }
+        }
+  },
+  {
+      type: 'input',
+      name: 'internID',
+      message: "What is the intern's ID? (Required)",
+      validate: idInput => {
+          if (idInput) {
+            return true;
+          } else {
+            console.log("Please enter the team intern's ID!");
+            return false;
+          }
+        }
+  },
+  {
+      type: 'input',
+      name: 'internEmail',
+      message: "What is the intern's email? (Required)",
+      validate: emailInput => {
+          if (emailInput) {
+            return true;
+          } else {
+            console.log("Please enter the team intern's email!");
+            return false;
+          }
+        }
+  },
+  {
+      type: 'input',
+      name: 'internSchool',
+      message: "What is the intern's school? (Required)",
+      validate: schoolInput => {
+          if (schoolInput) {
+            return true;
+          } else {
+            console.log("Please enter the intern's school!");
+            return false;
+          }
+        }
+  }
+]
+
 function init() {
     inquirer.prompt(promptManager).then((managerData) => {
         
