@@ -7,6 +7,14 @@ test("creating manager object", () => {
     expect(typeof(manager)).toBe("object");
 })
 
+test("adding office number", () => {
+    const officeNumber = 1234567890
+
+    const manager = new Manager("Ahmed", 12345, "ahmed@ahmed.com", officeNumber)
+
+    expect(manager.officeNumber).toBe(officeNumber)
+})
+
 test("getting office number", () => {
     const officeNumber = 1234567890
 
