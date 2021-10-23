@@ -83,8 +83,6 @@ const promptManager = () => {
 
         //ask user if they want to add more employees
         addEmployee()
-        //console.log the final dat returned from all the functions 
-        //on each index getrole() and dynamically generate each object based on what is returned
       })
 }
 
