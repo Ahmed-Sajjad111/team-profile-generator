@@ -1,9 +1,13 @@
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
+const renderHTML = require('./src/page-template')
 const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
+
+const outputDirectory = path.resolve(__dirname,'dist')
+const outputPath = path.join(outputDirectory,'index.html')
 
 //array to hold all employees created
 const allEmployees = []
@@ -84,6 +88,7 @@ const promptManager = () => {
       })
 }
 
+//ask user for information about engineer
 const promptEngineer = () => {
   inquirer.prompt(
     [
@@ -157,6 +162,7 @@ const promptEngineer = () => {
     })
 }
 
+//ask user for information about intern
 const promptIntern = () => {
   inquirer.prompt(
     [
@@ -230,6 +236,7 @@ const promptIntern = () => {
     })
 }
 
+//ask user if they want to add more employees
 const addEmployee = () => {
   inquirer.prompt({
       type: 'list',
@@ -250,15 +257,14 @@ const addEmployee = () => {
           promptIntern();
           break;
         case "None":
+        renderTeam();
           break;
       }
     })
 }
 
-// function init() {
-//     inquirer.prompt(promptManager).then((data) => {
-        
-//     })
-// }
+const renderTeam = () => {
+  fs.writeFileSync(outputPath,renderHTML(allEmployees),'utf-8')
+}
 
 promptManager()
