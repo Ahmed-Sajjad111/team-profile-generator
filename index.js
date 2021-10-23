@@ -1,9 +1,14 @@
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 
+//array to hold all employees created
 const allEmployees = []
 
+//ask user for information about manager
 const promptManager = () => {
   inquirer.prompt(
     [
@@ -61,7 +66,18 @@ const promptManager = () => {
         }
       ])
       .then((data) => {
-        //do you wanna add another employee
+        const managerName = data.managerName
+        const managerId = data.managerID
+        const managerEmail = data.managerEmail
+        const managerPhone = data.managerPhoneNumber
+
+        // create new manager object
+        const manager = new Manager(managerName, managerId, managerEmail, managerPhone)
+
+        //push newly created manager to array
+        allEmployees.push(manager)
+
+        //ask user if they want to add more employees
         addEmployee()
         //console.log the final dat returned from all the functions 
         //on each index getrole() and dynamically generate each object based on what is returned
@@ -123,8 +139,22 @@ const promptEngineer = () => {
               }
             }
       }
-    ]
-  )
+    ])
+    .then((data) => {
+      const engineerName = data.engineerName
+      const engineerId = data.engineerID
+      const engineerEmail = data.engineerEmail
+      const engineerGitHub = data.engineerGithub
+
+      // create new engineer object
+      const engineer = new Engineer(engineerName, engineerId, engineerEmail, engineerGitHub)
+
+      //push newly created engineer to array
+      allEmployees.push(engineer)
+
+      //ask user if they want to add more employees
+      addEmployee()
+    })
 }
 
 const promptIntern = () => {
@@ -182,8 +212,22 @@ const promptIntern = () => {
               }
             }
       }
-    ]
-  )
+    ])
+    .then((data) => {
+      const internName = data.internName
+      const internId = data.internID
+      const internEmail = data.internEmail
+      const internSchool = data.internSchool
+
+      // create new intern object
+      const intern = new Intern(internName, internId, internEmail, internSchool)
+
+      //push newly created intern to array
+      allEmployees.push(intern)
+
+      //ask user if they want to add more employees
+      addEmployee()
+    })
 }
 
 const addEmployee = () => {
