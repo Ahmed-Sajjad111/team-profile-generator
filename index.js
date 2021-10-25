@@ -57,13 +57,13 @@ const promptManager = () => {
         },
         {
             type: 'input',
-            name: 'managerPhoneNumber',
-            message: "What is the team manager's phone number? (Required)",
-            validate: phoneNumberInput => {
-                if (phoneNumberInput) {
+            name: 'managerOfficeNumber',
+            message: "What is the team manager's office number? (Required)",
+            validate: officeNumberInput => {
+                if (officeNumberInput) {
                   return true;
                 } else {
-                  console.log("Please enter the team manager's phone number!");
+                  console.log("Please enter the team manager's office number!");
                   return false;
                 }
               }
@@ -73,10 +73,10 @@ const promptManager = () => {
         const managerName = data.managerName
         const managerId = data.managerID
         const managerEmail = data.managerEmail
-        const managerPhone = data.managerPhoneNumber
+        const managerOffice = data.managerOfficeNumber
 
         // create new manager object
-        const manager = new Manager(managerName, managerId, managerEmail, managerPhone)
+        const manager = new Manager(managerName, managerId, managerEmail, managerOffice)
 
         //push newly created manager to array
         allEmployees.push(manager)
