@@ -255,7 +255,8 @@ const addEmployee = () => {
           promptIntern();
           break;
         case "None":
-        renderTeam();
+          console.log("Generating your team")
+          renderTeam();
           break;
       }
     })
